@@ -63,6 +63,10 @@ def home():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
+        if db is None:
+            flash('Database connection unavailable. Please contact support.')
+            return redirect(url_for('register'))
+            
         name = request.form['name']
         email = request.form['email']
         password = request.form['password'] # In a real app, hash this!
@@ -94,6 +98,10 @@ def register():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
+        if db is None:
+            flash('Database connection unavailable. Please try again later.')
+            return render_template('auth/login.html')
+            
         email = request.form['email']
         password = request.form['password']
         
@@ -169,6 +177,10 @@ def post_job():
         return redirect(url_for('home'))
 
     if request.method == 'POST':
+        if db is None:
+            flash('Database connection unavailable.')
+            return redirect(url_for('home'))
+            
         new_job = {
             'id': secrets.token_hex(8),
             'client_id': session['user_id'],
