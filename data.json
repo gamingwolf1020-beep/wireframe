@@ -1,0 +1,163 @@
+{
+    "users": [
+        {
+            "id": "a93e2097b58b7b83",
+            "name": "Ridwan",
+            "email": "0123456789@client.com",
+            "password": "0123456789@client",
+            "role": "client",
+            "joined_at": "2025-12-17 12:24:02"
+        },
+        {
+            "id": "ee27c0d555b4746c",
+            "name": "0123456789@free",
+            "email": "0123456789@free.com",
+            "password": "0123456789@free",
+            "role": "freelancer",
+            "joined_at": "2025-12-17 12:25:29"
+        },
+        {
+            "id": "mock_client_001",
+            "name": "StartUp Inc.",
+            "email": "client@startup.inc",
+            "password": "password",
+            "role": "client",
+            "joined_at": "2025-12-17 12:40:10"
+        }
+    ],
+    "jobs": [
+        {
+            "id": "615069352d4aab39",
+            "client_id": "a93e2097b58b7b83",
+            "client_name": "Ridwan",
+            "title": "Website Redesign",
+            "category": "web_dev",
+            "budget": "500",
+            "deadline": "2025-12-19",
+            "description": "Go to Post Job and fill out the form (e.g., \"Website Redesign\", Budget: $500).\r\nYou will be redirected to the Client Dashboard where you can see your new job.",
+            "posted_at": "2025-12-17"
+        },
+        {
+            "id": "22d35a87d35dbba6",
+            "client_id": "mock_client_001",
+            "client_name": "StartUp Inc.",
+            "title": "Build a React Native E-commerce App",
+            "category": "programming_tech",
+            "budget": "1500",
+            "deadline": "2025-01-20",
+            "description": "We need a skilled mobile developer to build a cross-platform e-commerce app using React Native. Must include payment gateway integration.",
+            "posted_at": "2025-12-17"
+        },
+        {
+            "id": "171f7e415dfe2fd4",
+            "client_id": "mock_client_001",
+            "client_name": "StartUp Inc.",
+            "title": "Logo Design for Tech Brand",
+            "category": "graphics_design",
+            "budget": "200",
+            "deadline": "2025-12-25",
+            "description": "Looking for a minimalist and modern logo for our new AI startup. Theme: Blue and Neon.",
+            "posted_at": "2025-12-17"
+        },
+        {
+            "id": "5d98d16d03c581d1",
+            "client_id": "mock_client_001",
+            "client_name": "StartUp Inc.",
+            "title": "SEO Optimization for Blog",
+            "category": "digital_marketing",
+            "budget": "300",
+            "deadline": "2025-01-05",
+            "description": "Improve ranking for our tech blog. Keywords analysis and on-page SEO required.",
+            "posted_at": "2025-12-17"
+        },
+        {
+            "id": "d1fd7ab5c1030959",
+            "client_id": "mock_client_001",
+            "client_name": "StartUp Inc.",
+            "title": "Translate Legal Documents to Spanish",
+            "category": "writing_translation",
+            "budget": "100",
+            "deadline": "2025-12-30",
+            "description": "Certified translator needed for 10 pages of legal contracts.",
+            "posted_at": "2025-12-17"
+        },
+        {
+            "id": "27228b6af1732ef5",
+            "client_id": "mock_client_001",
+            "client_name": "StartUp Inc.",
+            "title": "Explainer Video for SaaS Product",
+            "category": "video_animation",
+            "budget": "800",
+            "deadline": "2025-01-15",
+            "description": "Create a 60-second 2D animated explainer video for our dashboard software.",
+            "posted_at": "2025-12-17"
+        },
+        {
+            "id": "d012ae4703acef78",
+            "client_id": "mock_client_001",
+            "client_name": "StartUp Inc.",
+            "title": "Composer for Game Soundtrack",
+            "category": "music_audio",
+            "budget": "400",
+            "deadline": "2025-02-01",
+            "description": "Ambient sci-fi background music needed for an indie game.",
+            "posted_at": "2025-12-17"
+        },
+        {
+            "id": "97231932f1f5863d",
+            "client_id": "mock_client_001",
+            "client_name": "StartUp Inc.",
+            "title": "Virtual Assistant for Executives",
+            "category": "business",
+            "budget": "500",
+            "deadline": "2025-01-10",
+            "description": "Manage emails, schedule meetings, and travel arrangements for 2 executives.",
+            "posted_at": "2025-12-17"
+        },
+        {
+            "id": "a44045543eddcfb6",
+            "client_id": "mock_client_001",
+            "client_name": "StartUp Inc.",
+            "title": "Data Scraper for Real Estate",
+            "category": "data",
+            "budget": "250",
+            "deadline": "2025-12-28",
+            "description": "Scrape property listings from 3 major real estate websites and export to CSV.",
+            "posted_at": "2025-12-17"
+        },
+        {
+            "id": "6e1f6da36e2d39e6",
+            "client_id": "mock_client_001",
+            "client_name": "StartUp Inc.",
+            "title": "Fine-tune LLM for Customer Support",
+            "category": "data",
+            "budget": "2000",
+            "deadline": "2025-02-15",
+            "description": "We need an AI engineer to fine-tune Llama-3 on our support tickets dataset.",
+            "posted_at": "2025-12-17"
+        },
+        {
+            "id": "1f98e15796a5db3b",
+            "client_id": "mock_client_001",
+            "client_name": "StartUp Inc.",
+            "title": "Online Fitness Coach",
+            "category": "lifestyle",
+            "budget": "150",
+            "deadline": "2025-01-01",
+            "description": "Create a personalized 4-week workout and nutrition plan.",
+            "posted_at": "2025-12-17"
+        }
+    ],
+    "proposals": [
+        {
+            "id": "6129674900955585",
+            "job_id": "615069352d4aab39",
+            "freelancer_id": "ee27c0d555b4746c",
+            "freelancer_name": "0123456789@free",
+            "bid_amount": "500",
+            "cover_letter": "ACFAW",
+            "status": "Pending",
+            "created_at": "2025-12-17 12:25"
+        }
+    ]
+}
