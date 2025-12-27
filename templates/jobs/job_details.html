@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}{{ job.title }}{% endblock %}
+
+{% block content %}
+<div style="max-width: 900px; margin: 0 auto;">
+    <div class="glass-panel" style="padding: 2.5rem; margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem;">
+            <div>
+                <h1 style="margin-bottom: 0.5rem;">{{ job.title }}</h1>
+                <p style="opacity: 0.6;">Posted by {{ job.client_name }} on {{ job.posted_at }}</p>
+            </div>
+            <div style="text-align: right;">
+                <div style="font-size: 1.5rem; color: var(--accent); font-weight: bold;">${{ job.budget }}</div>
+                <div style="font-size: 0.9rem; opacity: 0.6;">Fixed Price</div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+            <h3 style="margin-bottom: 1rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 0.5rem;">
+                Description</h3>
+            <p style="line-height: 1.6; white-space: pre-line;">{{ job.description }}</p>
+        </div>
+
+        <div style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+            <div>
+                <strong>Category:</strong> <span style="opacity: 0.8;">{{ job.category }}</span>
+            </div>
+            <div>
+                <strong>Deadline:</strong> <span style="opacity: 0.8;">{{ job.deadline }}</span>
+            </div>
+        </div>
+    </div>
+
+    {% if current_user and current_user.role == 'freelancer' %}
+    <div class="glass-panel" style="padding: 2rem;">
+        <h3 style="margin-bottom: 1.5rem;">Submit a Proposal</h3>
+        <form action="{{ url_for('submit_proposal', job_id=job.id) }}" method="POST">
+            <div class="form-group">
+                <label for="bid_amount">Bid Amount ($)</label>
+                <input type="number" id="bid_amount" name="bid_amount" required value="{{ job.budget }}">
+            </div>
+            <div class="form-group">
+                <label for="cover_letter">Cover Letter</label>
+                <textarea id="cover_letter" name="cover_letter" rows="5" required
+                    placeholder="Why are you the best fit for this job?"></textarea>
+            </div>
+            <button type="submit" class="btn-neon">Send Proposal</button>
+        </form>
+    </div>
+    {% elif current_user and current_user.id == job.client_id %}
+    <div class="glass-panel" style="padding: 2rem;">
+        <h3 style="margin-bottom: 1.5rem;">Proposals Received</h3>
+        {% if proposals %}
+        {% for proposal in proposals %}
+        <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                <strong>{{ proposal.freelancer_name }}</strong>
+                <span style="color: var(--accent);">${{ proposal.bid_amount }}</span>
+            </div>
+            <p style="opacity: 0.8; margin-bottom: 0.5rem;">{{ proposal.cover_letter }}</p>
+            <div style="font-size: 0.8rem; opacity: 0.5;">{{ proposal.created_at }}</div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p style="opacity: 0.7;">No proposals yet.</p>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

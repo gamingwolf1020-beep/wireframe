@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">
+            Structure Your Work with <br> <span style="color: var(--primary);">WireFrame</span>
+        </h1>
+        <p class="hero-text">
+            The minimalist marketplace for top-tier developers and creatives.
+            Clear, transparent, and built for professionals.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="{{ url_for('register') }}" class="btn-neon" style="padding: 15px 30px;">Get Started</a>
+            <a href="{{ url_for('browse_jobs') }}" class="btn-dark">
+                Browse Jobs
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="features-section">
+    <div class="glass-panel feature-card">
+        <img src="{{ url_for('static', filename='assets/secure_icon.png') }}" alt="Secure" class="feature-icon">
+        <h3>Secure</h3>
+        <p>Verified freelancers and secure payment handling for peace of mind.</p>
+    </div>
+    <div class="glass-panel feature-card">
+        <img src="{{ url_for('static', filename='assets/fast_icon.png') }}" alt="Fast" class="feature-icon">
+        <h3>Fast</h3>
+        <p>Post a job and start receiving proposals within minutes.</p>
+    </div>
+    <div class="glass-panel feature-card">
+        <img src="{{ url_for('static', filename='assets/modern_icon.png') }}" alt="Modern" class="feature-icon">
+        <h3>Modern</h3>
+        <p>A cutting-edge platform designed for the next generation of work.</p>
+    </div>
+</div>
+{% endblock %}

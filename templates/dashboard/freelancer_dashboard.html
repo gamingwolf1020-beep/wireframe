@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Freelancer Dashboard{% endblock %}
+
+{% block content %}
+<div class="glass-panel" style="padding: 2rem; margin-bottom: 2rem;">
+    <h1>Welcome, {{ current_user.name }}</h1>
+    <p>Find new opportunities and track your applications.</p>
+</div>
+
+<div class="dashboard-grid">
+    <div>
+        <h3 style="margin-bottom: 1rem;">Your Active Proposals</h3>
+        {% if my_proposals %}
+        {% for proposal in my_proposals %}
+        <div class="glass-panel" style="padding: 1.5rem; margin-bottom: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <h4>Job: {{ proposal.job_title }}</h4>
+                    <p style="opacity: 0.7;">Status: <span style="color: var(--primary);">{{ proposal.status }}</span>
+                    </p>
+                </div>
+                <form action="{{ url_for('delete_proposal', proposal_id=proposal.id) }}" method="POST"
+                    onsubmit="return confirm('Withdraw this proposal?');">
+                    <button type="submit"
+                        style="background: none; border: none; color: #ef4444; cursor: pointer; font-size: 0.9rem;">&times;
+                        Withdraw</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="glass-panel" style="padding: 2rem; text-align: center; opacity: 0.7;">
+            <p>You haven't sent any proposals yet.</p>
+            <a href="{{ url_for('browse_jobs') }}" class="btn-neon"
+                style="display: inline-block; margin-top: 1rem;">Browse Jobs</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <div>
+        <h3 style="margin-bottom: 1rem;">Recommended Jobs</h3>
+        <div class="glass-panel" style="padding: 2rem; text-align: center; opacity: 0.7;">
+            <p>Coming soon...</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

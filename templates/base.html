@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WireFrame | {% block title %} Freelance Hub {% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <nav class="glass-panel">
+        <a href="{{ url_for('home') }}" class="logo">WireFrame</a>
+        <div class="nav-links">
+            <a href="{{ url_for('categories') }}">Categories</a>
+            {% if current_user %}
+            {% if current_user.role == 'client' %}
+            <a href="{{ url_for('client_dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('post_job') }}">Post Job</a>
+            {% else %}
+            <a href="{{ url_for('freelancer_dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('browse_jobs') }}">Browse Jobs</a>
+            {% endif %}
+            <a href="{{ url_for('logout') }}">Logout</a>
+            <span class="user-greeting">Hello, {{ current_user.name }}</span>
+            {% else %}
+            <a href="{{ url_for('browse_jobs') }}">Browse Jobs</a>
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('register') }}" class="btn-neon btn-sm">Sign Up</a>
+            {% endif %}
+            <button id="theme-toggle" class="btn-neon theme-toggle-btn">
+                🌗
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="flashes">
+            {% for message in messages %}
+            <li class="flash-message">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        <p>&copy; 2025 WireFrame. The detailed marketplace.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

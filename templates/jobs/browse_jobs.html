@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Browse Jobs{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 2rem; text-align: center;">
+    <h1>Available Opportunities</h1>
+    <p style="opacity: 0.7; margin-top: 0.5rem;">Find the perfect project for your skills</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;">
+    {% for job in jobs %}
+    <div class="glass-panel" style="padding: 1.5rem; display: flex; flex-direction: column;">
+        <div style="margin-bottom: 1rem;">
+            <span
+                style="background: rgba(112, 48, 239, 0.3); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; text-transform: uppercase;">{{
+                job.category }}</span>
+        </div>
+        <h3 style="margin-bottom: 0.5rem;">{{ job.title }}</h3>
+        <p
+            style="flex: 1; opacity: 0.8; font-size: 0.95rem; margin-bottom: 1rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+            {{ job.description }}
+        </p>
+
+        <div
+            style="display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--glass-border);">
+            <div>
+                <span style="font-size: 0.8rem; opacity: 0.6;">Budget</span>
+                <div style="color: var(--accent); font-weight: bold;">${{ job.budget }}</div>
+            </div>
+            <a href="{{ url_for('view_job', job_id=job.id) }}" class="btn-neon"
+                style="font-size: 0.9rem; padding: 8px 16px;">View</a>
+        </div>
+    </div>
+    {% else %}
+    <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+        <p style="font-size: 1.2rem; opacity: 0.7;">No active jobs found.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

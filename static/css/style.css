@@ -1,0 +1,423 @@
+:root {
+    --primary: #2563EB;
+    --primary-hover: #1d4ed8;
+    --secondary: #64748B;
+    --background: #F3F4F6;
+    --surface: rgba(255, 255, 255, 0.65);
+    --text: #1F2937;
+    --text-muted: #6B7280;
+    --border: rgba(255, 255, 255, 0.8);
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+[data-theme="dark"] {
+    --primary: #60A5FA;
+    --primary-hover: #3B82F6;
+    --secondary: #9CA3AF;
+    --background: #111827;
+    --surface: rgba(31, 41, 55, 0.7);
+    --text: #F9FAFB;
+    --text-muted: #D1D5DB;
+    --border: rgba(255, 255, 255, 0.1);
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background: var(--background);
+    /* Optional: Use a subtle gradient if desired, but keep it simple for theme switching */
+    /* background: radial-gradient(circle at 50% 10%, #E0E7FF, #F3F4F6 60%); */
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Glass Utility */
+.glass-panel {
+    background: var(--surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-panel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.15);
+}
+
+.glass-panel img {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: inherit;
+}
+
+/* Buttons */
+.btn-neon {
+    /* Keeping class name for compatibility, changing style */
+    background: var(--primary);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-neon:hover {
+    background: var(--primary-hover);
+    box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-dark {
+    background: #1F2937;
+    color: white;
+    padding: 11px 25px;
+    /* Matches btn-neon padding roughly */
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1.1rem;
+    /* Matches home page button size */
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid transparent;
+}
+
+.btn-dark:hover {
+    background: #111827;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .btn-dark {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+[data-theme="dark"] .btn-dark:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Navigation */
+nav {
+    padding: 1.25rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 1rem;
+    z-index: 100;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-left: 2rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary);
+}
+
+/* Ensure buttons in nav keep their text color */
+.nav-links a.btn-neon {
+    color: white;
+}
+
+/* Forms */
+.auth-container {
+    max-width: 420px;
+    margin: 4rem auto;
+    padding: 3rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #E5E7EB;
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    background: white;
+}
+
+/* Alerts */
+.flashes {
+    list-style: none;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+}
+
+.flash-message {
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-left: 5px solid var(--primary);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    backdrop-filter: blur(8px);
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    flex: 1;
+}
+
+footer {
+    text-align: center;
+    padding: 2.5rem;
+    margin-top: auto;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Utility */
+h1,
+h2,
+h3,
+h4 {
+    color: var(--text);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+p {
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+/* --- New Responsive Classes --- */
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    padding: 4rem 1rem;
+    position: relative;
+    overflow: hidden;
+    /* Prevent horizontal scroll */
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    z-index: 2;
+    position: relative;
+    padding: 0 1rem;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+    line-height: 1.2;
+}
+
+.hero-text {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* Allow wrapping on small screens */
+}
+
+/* Features grid */
+.features-section {
+    display: flex;
+    gap: 2rem;
+    margin-top: 4rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.feature-card {
+    padding: 2.5rem;
+    width: 320px;
+    text-align: center;
+}
+
+.feature-icon {
+    width: 80px;
+    margin-bottom: 1.5rem;
+}
+
+/* Navbar utilities */
+.user-greeting {
+    margin-left: 1rem;
+    color: var(--text);
+    font-weight: 500;
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+
+.theme-toggle-btn {
+    padding: 8px 12px;
+    margin-left: 1rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+/* Dashboard utilities */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.dashboard-flex {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.dashboard-col {
+    flex: 1;
+    min-width: 280px;
+}
+
+/* Mobile Media Query */
+@media (max-width: 768px) {
+
+    /* Navigation */
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nav-links a {
+        margin-left: 0;
+    }
+
+    .user-greeting,
+    .theme-toggle-btn {
+        margin-left: 0;
+    }
+
+    /* Hero */
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-text {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    /* Features */
+    .features-section {
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .feature-card {
+        width: 100%;
+        /* Full width cards */
+        padding: 2rem 1.5rem;
+    }
+
+    /* Auth Forms */
+    .auth-container {
+        padding: 1.5rem;
+        margin: 2rem auto;
+    }
+}

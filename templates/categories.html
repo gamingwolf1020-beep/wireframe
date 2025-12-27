@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Categories{% endblock %}
+
+{% block content %}
+<div style="text-align: center; margin-bottom: 3rem;">
+    <h1>Browse by Category</h1>
+    <p style="opacity: 0.7; margin-top: 0.5rem;">Explore opportunities across various skills</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem;">
+    <!-- Programming & Tech -->
+    <div class="glass-panel" style="padding: 2rem; transition: transform 0.3s;">
+
+        <h3 style="margin-bottom: 0.5rem;">Programming & Tech</h3>
+        <p style="opacity: 0.7; font-size: 0.9rem;">Web Development, Mobile Apps, Game Dev, Chatbots, Support & IT.</p>
+        <a href="{{ url_for('browse_jobs', category='programming_tech') }}" class="btn-neon"
+            style="display: block; text-align: center; margin-top: 1.5rem; font-size: 0.9rem;">Explore</a>
+    </div>
+
+    <!-- Graphics & Design -->
+    <div class="glass-panel" style="padding: 2rem; transition: transform 0.3s;">
+
+        <h3 style="margin-bottom: 0.5rem;">Graphics & Design</h3>
+        <p style="opacity: 0.7; font-size: 0.9rem;">Logo Design, UX/UI, Illustrations, NFT Art, Branding.</p>
+        <a href="{{ url_for('browse_jobs', category='graphics_design') }}" class="btn-neon"
+            style="display: block; text-align: center; margin-top: 1.5rem; font-size: 0.9rem;">Explore</a>
+    </div>
+
+    <!-- Digital Marketing -->
+    <div class="glass-panel" style="padding: 2rem; transition: transform 0.3s;">
+
+        <h3 style="margin-bottom: 0.5rem;">Digital Marketing</h3>
+        <p style="opacity: 0.7; font-size: 0.9rem;">SEO, Social Media, Content Marketing, Email Marketing, Ads.</p>
+        <a href="{{ url_for('browse_jobs', category='digital_marketing') }}" class="btn-neon"
+            style="display: block; text-align: center; margin-top: 1.5rem; font-size: 0.9rem;">Explore</a>
+    </div>
+
+    <!-- Writing & Translation -->
+    <div class="glass-panel" style="padding: 2rem; transition: transform 0.3s;">
+
+        <h3 style="margin-bottom: 0.5rem;">Writing & Translation</h3>
+        <p style="opacity: 0.7; font-size: 0.9rem;">Articles, Translation, Creative Writing, Ghostwriting, Proofreading.
+        </p>
+        <a href="{{ url_for('browse_jobs', category='writing_translation') }}" class="btn-neon"
+            style="display: block; text-align: center; margin-top: 1.5rem; font-size: 0.9rem;">Explore</a>
+    </div>
+
+    <!-- Video & Animation -->
+    <div class="glass-panel" style="padding: 2rem; transition: transform 0.3s;">
+
+        <h3 style="margin-bottom: 0.5rem;">Video & Animation</h3>
+        <p style="opacity: 0.7; font-size: 0.9rem;">Video Editing, Animation, Intros, VFX, 3D Product Animation.</p>
+        <a href="{{ url_for('browse_jobs', category='video_animation') }}" class="btn-neon"
+            style="display: block; text-align: center; margin-top: 1.5rem; font-size: 0.9rem;">Explore</a>
+    </div>
+
+    <!-- Music & Audio -->
+    <div class="glass-panel" style="padding: 2rem; transition: transform 0.3s;">
+
+        <h3 style="margin-bottom: 0.5rem;">Music & Audio</h3>
+        <p style="opacity: 0.7; font-size: 0.9rem;">Voice Over, Mixing & Mastering, Producers, Singers, Audio Ads.</p>
+        <a href="{{ url_for('browse_jobs', category='music_audio') }}" class="btn-neon"
+            style="display: block; text-align: center; margin-top: 1.5rem; font-size: 0.9rem;">Explore</a>
+    </div>
+
+    <!-- Business -->
+    <div class="glass-panel" style="padding: 2rem; transition: transform 0.3s;">
+
+        <h3 style="margin-bottom: 0.5rem;">Business</h3>
+        <p style="opacity: 0.7; font-size: 0.9rem;">Virtual Assistant, Data Entry, Market Research, Project Management.
+        </p>
+        <a href="{{ url_for('browse_jobs', category='business') }}" class="btn-neon"
+            style="display: block; text-align: center; margin-top: 1.5rem; font-size: 0.9rem;">Explore</a>
+    </div>
+
+    <!-- Data & AI -->
+    <div class="glass-panel" style="padding: 2rem; transition: transform 0.3s;">
+
+        <h3 style="margin-bottom: 0.5rem;">Data & AI</h3>
+        <p style="opacity: 0.7; font-size: 0.9rem;">AI Services, Data Science, Databases, Data Analytics.</p>
+        <a href="{{ url_for('browse_jobs', category='data') }}" class="btn-neon"
+            style="display: block; text-align: center; margin-top: 1.5rem; font-size: 0.9rem;">Explore</a>
+    </div>
+
+    <!-- Lifestyle -->
+    <div class="glass-panel" style="padding: 2rem; transition: transform 0.3s;">
+
+        <h3 style="margin-bottom: 0.5rem;">Lifestyle</h3>
+        <p style="opacity: 0.7; font-size: 0.9rem;">Online Tutoring, Wellness, Gaming, Life Coaching, Astrology.</p>
+        <a href="{{ url_for('browse_jobs', category='lifestyle') }}" class="btn-neon"
+            style="display: block; text-align: center; margin-top: 1.5rem; font-size: 0.9rem;">Explore</a>
+    </div>
+</div>
+{% endblock %}
